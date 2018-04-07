@@ -29,7 +29,10 @@ export class HeroesComponent implements OnInit {
     // 1) 잘못e된 방법: 의존성이 생긴다. 컴포넌트가 서비스를 제어
     // const heroService = new HeroService();
     // this.heroes = heroService.getHeroes();
-    this.heroes = this.heroService.getHeroes();
+    this.heroService.getHeroes()
+      .subscribe(data => {
+        this.heroes = data;
+      });
   }
 
   onSelect(hero: Hero) {
